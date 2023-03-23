@@ -23,17 +23,17 @@ class Fool_enc:
             self.pc_keys.append(random_card[0])
 
     def set_my_card(self, card1, card2, card3, card4, card5, card6):
+        cards = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10, 6: 'Jack', 7: 'Queen', 8: 'King', 9: 'Ace'}
         self.__my_card = []
-        if (0 < card1 < 10) & (0 < card2 < 10) & (0 < card3 < 10) & (0 < card4 < 10) & (0 < card5 < 10) & (0 < card6 < 10):
-            self.__my_card.append(card1)
-            self.__my_card.append(card2)
-            self.__my_card.append(card3)
-            self.__my_card.append(card4)
-            self.__my_card.append(card5)
-            self.__my_card.append(card6)
-            return self.__my_card
-        else:
-            raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
+        self.my_keys = []
+        temp_list = [card1, card2, card3, card4, card5, card6]
+        for i in temp_list:
+            if i in cards:
+                card = cards.get(i)
+                self.__my_card.append(card)
+                self.my_keys.append(i)
+            else:
+                raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
 
     def get_my_card(self):
         return self.__my_card
@@ -44,31 +44,56 @@ class Fool_enc:
         return self.__my_card
 
     @my_card.setter
-    def my_card(self, card1, card2, card3, card4, card5, card6):
-        self.__my_card = [card1, card2, card3, card4, card5, card6]
+    def my_card(self, cards_my):
+        cards = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10, 6: 'Jack', 7: 'Queen', 8: 'King', 9: 'Ace'}
+        self.__my_card = []
+        self.my_keys = []
+        if len(cards_my) > 6:
+            raise Exception('Введено неверное количество карт. Введите не более 6 карт!')
+        else:
+            for i in cards_my:
+                if i in cards:
+                    card = cards.get(i)
+                    self.__my_card.append(card)
+                    self.my_keys.append(i)
+                else:
+                    raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
 
     def set_pc_card(self, card1, card2, card3, card4, card5, card6):
+        cards = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10, 6: 'Jack', 7: 'Queen', 8: 'King', 9: 'Ace'}
         self.__pc_card = []
-        if (0 < card1 < 10) & (0 < card2 < 10) & (0 < card3 < 10) & (0 < card4 < 10) & (0 < card5 < 10) & (0 < card6 < 10):
-            self.__pc_card.append(card1)
-            self.__pc_card.append(card2)
-            self.__pc_card.append(card3)
-            self.__pc_card.append(card4)
-            self.__pc_card.append(card5)
-            self.__pc_card.append(card6)
-            return self.__pc_card
-        else:
-            raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
+        self.pc_keys = []
+        temp_list = [card1, card2, card3, card4, card5, card6]
+        for i in temp_list:
+            if i in cards:
+                card = cards.get(i)
+                self.__pc_card.append(card)
+                self.pc_keys.append(i)
+            else:
+                raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
 
     def get_pc_card(self):
         return self.__pc_card
+
     @property
     def pc_card(self):
         return self.__pc_card
 
     @pc_card.setter
-    def pc_card(self, card1, card2, card3, card4, card5, card6):
-        self.__pc_card = card1, card2, card3, card4, card5, card6
+    def pc_card(self, cards_pc):
+        cards = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10, 6: 'Jack', 7: 'Queen', 8: 'King', 9: 'Ace'}
+        self.__pc_card = []
+        self.pc_keys = []
+        if len(cards_pc) > 6:
+            raise Exception('Введено неверное количество карт. Введите не более 6 карт!')
+        else:
+            for i in cards_pc:
+                if i in cards:
+                    card = cards.get(i)
+                    self.__pc_card.append(card)
+                    self.pc_keys.append(i)
+                else:
+                    raise Exception('Карты введены неверно! Введите шесть карт от 1 до 9')
 
     def my_move(self):
         move_random_card = random.choice(self.__my_card)
@@ -139,12 +164,10 @@ if __name__ == '__main__':
     print(fool_game.get_my_card(), fool_game.get_pc_card())
 
 #    fool_game.set_my_card(6, 9, 8, 2, 7, 9)
-    fool_game.my_card = 2, 3, 4, 6, 8, 9
-
 #    fool_game.set_pc_card(9, 1, 3, 9, 8, 7)
-#    fool_game.pc_card = [9, 8, 7, 6, 5, 4]
 
-#    print(fool_game.get_my_card(), fool_game.get_pc_card())
+    fool_game.my_card = [2, 3, 4, 5, 7, 9]
+    fool_game.pc_card = [6, 1, 2, 9, 2, 6]
 
     print(fool_game.get_my_card(), fool_game.get_pc_card())
 
