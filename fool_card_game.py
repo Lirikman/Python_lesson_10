@@ -160,14 +160,13 @@ class Fool_enc:
 if __name__ == '__main__':
     fool_game = Fool_enc()
     print(fool_game.get_my_card(), fool_game.get_pc_card())
-    print(len(fool_game.my_card), len(fool_game.pc_card))
 #    fool_game.set_my_card(6, 9, 8, 2, 7, 9)
 #    fool_game.set_pc_card(9, 1, 3, 9, 8, 7)
 
-#    fool_game.my_card = [2, 3, 4, 5, 7, 9]
-#   fool_game.pc_card = [6, 1, 2, 9, 2, 6]
+    fool_game.my_card = [2, 3, 4, 5, 7, 9]
+    fool_game.pc_card = [6, 1, 2, 9, 2, 6]
 
-#    print(fool_game.get_my_card(), fool_game.get_pc_card())
+    print(fool_game.get_my_card(), fool_game.get_pc_card())
 
     print(fool_game.my_move())
     print(fool_game.pc_move())
