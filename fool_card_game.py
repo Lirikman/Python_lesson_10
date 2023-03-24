@@ -40,7 +40,6 @@ class Fool_enc:
 
     @property
     def my_card(self):
-        self.__my_card = []
         return self.__my_card
 
     @my_card.setter
